@@ -10,6 +10,7 @@ import numpy as np
 app = Flask(__name__)
 
 def main():
+    session.set_env(title="Tablet Prices Update")
     def Extract_CellphoneS(url = None):
         page_to_scrape = requests.get(url)
         soup = BeautifulSoup(page_to_scrape.text, "html.parser")
@@ -87,4 +88,4 @@ def main():
 app.add_url_rule("/", "webio_view", webio_view(main), methods = ["GET", "POST"])
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug = True, port = 8000)
