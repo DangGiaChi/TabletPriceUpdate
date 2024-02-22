@@ -1,13 +1,15 @@
-# from flask import Flask
-# from views import views
+from flask import Flask
+from pywebio.platform.flask import webio_view
 from bs4 import BeautifulSoup
 import requests
 from pywebio.output import *
 from pywebio import session
-from pywebio import start_server
+#from pywebio import start_server
 import numpy as np
 
-def app():
+app = Flask(__name__)
+
+def main():
     def Extract_CellphoneS(url = None):
         page_to_scrape = requests.get(url)
         soup = BeautifulSoup(page_to_scrape.text, "html.parser")
@@ -82,5 +84,7 @@ def app():
 
     session.hold()
 
+app.add_url_rule("/", "webio_view", webio_view(main), methods = ["GET", "POST"])
+
 if __name__ == '__main__':
-	start_server(app, port=32420, debug=True)
+    app.run(debug = True)
