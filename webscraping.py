@@ -16,7 +16,7 @@ def Extract_CellphoneS(url = None):
     product = []
     price = []
 
-    for i in data:
+    for i in data: 
         product.append(i.find("strong").text)
         price.append(i.find("span").text)
     
@@ -50,8 +50,8 @@ def make_table(url = None):
         if "cellphone" in url:
             data = Extract_CellphoneS(url)
             for item in data:
-                table.append(item)
+                table.append([item[0], put_html('<a target = "_blank" href = "{}">{}</a>'.format(url, item[1])), item[2]])
         else:
             data = Extract_Samcenter(url)
-            table.append(data)
+            table.append([data[0], put_html('<a target = "_blank" href = "{}">{}</a>'.format(url, data[1])), data[2]])
         put_table(table)

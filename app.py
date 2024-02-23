@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 import requests
 from pywebio.output import *
 from pywebio import session
-#from pywebio import start_server
 import numpy as np
 from webscraping import make_table
 
@@ -20,9 +19,6 @@ def main():
     TAB_S9_SAM = "https://samcenter.vn/vn/galaxy-tab-s9-wi-fi-128gb"
     TAB_S9_PLUS_SAM = "https://samcenter.vn/vn/galaxy-tab-s9-plus-wifi-256gb"
     TAB_S9_PLUS_5G = "https://samcenter.vn/vn/galaxy-tab-s9-plus-5g-256gb"
-
-    # app = Flask(__name__)
-    # app.register_blueprint(views, url_prefix = "/")
 
     put_text("\nTab S9 cellphoneS")
     make_table(TAB_S9_CELL)
